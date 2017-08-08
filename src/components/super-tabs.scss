@@ -195,8 +195,12 @@ super-tabs-toolbar {
       -webkit-transition: 300ms;
       transition: 300ms;
       /*pointer-events: none;*/
-
-      width: 100%;
+      top: 30px;
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
       /*--*/
 
       .tab-buttons {
@@ -291,8 +295,8 @@ super-tabs-toolbar {
           > a {
             top: 0;
             left: 0;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             outline: none;
             text-indent: -999em; /* make the text accessible to screen readers */
             cursor: pointer;
@@ -338,8 +342,8 @@ super-tabs-toolbar {
             position: relative;
             display: block;
             float: left;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-left: 4px;
+            margin-right: 4px;
             width: 8px;
             height: 8px;
             padding: 0;
@@ -356,7 +360,7 @@ super-tabs-toolbar {
             position: absolute;
             left: 0;
             margin: 0;
-            width: 10px;
+            width: 8px;
 
             /*
             -webkit-transition: -webkit-transform 0.3s ease;
@@ -368,8 +372,8 @@ super-tabs-toolbar {
               position: absolute;
               left: 50%;
               top: -1px;
-              width: 10px;
-              height: 10px;
+              width: 7px;
+              height: 7px;
               border-radius: 100%;
               background: #c44d48;
             }

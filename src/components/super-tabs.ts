@@ -84,7 +84,7 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
    * Bullet animation like Shazam
    */
   @Input()
-  bulletTranslate: number = 10;
+  bulletTranslate: number = 8;
 
   /**
    * Color of the toolbar behind the tab buttons
