@@ -47,6 +47,7 @@ super-tabs {
     }
 
     > super-tabs-toolbar > ion-toolbar.toolbar {
+/*
       &::after, &::before {
         position: absolute;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
@@ -60,6 +61,7 @@ super-tabs {
         background-position: 0 -2px;
         bottom: -5px;
       }
+*/
       contain: inherit;
       display: block;
       overflow: visible;
@@ -184,12 +186,39 @@ super-tabs-toolbar {
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       overflow: hidden;
 
+      /*--*/
+      text-align: center;
+      -webkit-transform: translate3d(0,  0,  0);
+      transform: translate3d(0,  0,  0);
+      position: absolute;
+      z-index: 2;
+      -webkit-transition: 300ms;
+      transition: 300ms;
+      /*pointer-events: none;*/
+
+      width: 100%;
+      /*--*/
+
       .tab-buttons {
         display: flex;
         flex: 1;
         align-items: center;
         justify-content: center;
         width: 100%;
+
+        /*-*/
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        cursor: default;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*-*/
 
         super-tab-button {
 
@@ -259,18 +288,36 @@ super-tabs-toolbar {
             right: 4px;
           }
 
+          > a {
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            outline: none;
+            text-indent: -999em; /* make the text accessible to screen readers */
+            cursor: pointer;
+            position: absolute;
+
+            border-radius: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+
+            &:focus{
+              outline: none;
+            }
+          }
+
         }
 
       }
 
       .indicator {
-        bottom: 0;
         position: absolute;
         z-index: 2;
-        height: 2px;
-        width: 100px;
+/*
         transform: scaleX(0);
         transform-origin: 0;
+*/
+
       }
 
     }
@@ -281,20 +328,54 @@ super-tabs-toolbar {
 
         .tab-buttons {
           position: relative;
+          width: auto;
+
           justify-content: flex-start;
+
           super-tab-button {
-            min-width: 50px;
-            max-width: 100%;
-            width: auto;
-            display: inline-table;
-            overflow: visible;
+            overflow: hidden;
+
+            position: relative;
+            display: block;
+            float: left;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 8px;
+            height: 8px;
+            padding: 0;
+
+            border: none;
+            background: transparent;
 
           }
         }
 
         .indicator {
-          position: relative;
-          margin-top: -2px;
+
+          &:last-child {
+            position: absolute;
+            left: 0;
+            margin: 0;
+            width: 10px;
+
+            /*
+            -webkit-transition: -webkit-transform 0.3s ease;
+            transition: transform 0.3s ease;
+            */
+
+            &::after {
+              content: '';
+              position: absolute;
+              left: 50%;
+              top: -1px;
+              width: 10px;
+              height: 10px;
+              border-radius: 100%;
+              background: #c44d48;
+            }
+          }
+
+
         }
 
       }

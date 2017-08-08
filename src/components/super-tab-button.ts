@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEn
   selector: 'super-tab-button',
   template: `
     <ion-icon *ngIf="!!icon" [name]="icon" [color]="color"></ion-icon>
+    <a></a>
     <span class="title" *ngIf="!!title" ion-text [color]="color">{{ title }}</span>
     <ion-badge mode="md" [color]="badgeColor">{{ badge }}</ion-badge>
     <div class="button-effect"></div>

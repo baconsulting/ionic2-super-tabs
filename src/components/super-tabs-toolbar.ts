@@ -15,8 +15,8 @@ import { SuperTabButton } from "./super-tab-button";
         <div *ngIf="tabsPlacement === 'bottom'" class="indicator {{ 'button-md-' + indicatorColor }}" #indicator></div>
         <div class="tab-buttons" #tabButtons>
           <super-tab-button *ngFor="let tab of tabs; let i = index" (select)="selectedTab !== i && onTabSelect(i)" [title]="tab.title" [icon]="tab.icon" [badge]="tab.badge" [selected]="selectedTab === i" [color]="tabsColor" [badgeColor]="badgeColor"></super-tab-button>
+          <div *ngIf="tabsPlacement === 'top'" class="indicator {{ 'button-md-' + indicatorColor }}" #indicator></div>
         </div>
-        <div *ngIf="tabsPlacement === 'top'" class="indicator {{ 'button-md-' + indicatorColor }}" #indicator></div>
       </div>
     </ion-toolbar>
   `,
@@ -144,7 +144,7 @@ export class SuperTabsToolbar implements AfterViewInit, OnDestroy {
     this.indicatorPosition = position;
     const scale = width / 100;
     this.toggleAnimation('indicator', animate);
-    this.rnd.setStyle(this.indicator.nativeElement, this.plt.Css.transform,  'translate3d(' + (position - this.segmentPosition) + 'px, 0, 0) scale3d(' + scale + ', 1, 1)')
+    this.rnd.setStyle(this.indicator.nativeElement, this.plt.Css.transform,  'translate3d(' + (position - this.segmentPosition) + 'px, 0, 0)')
   }
 
   setSegmentPosition(position: number, animate?: boolean) {
