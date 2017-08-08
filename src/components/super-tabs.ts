@@ -75,6 +75,18 @@ export interface SuperTabsConfig {
 export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDestroy, RootNode, NavigationContainer {
 
   /**
+   * Bullet animation like Shazam
+   */
+  @Input()
+  bulletAnimation: boolean = false;
+
+  /**
+   * Bullet animation like Shazam
+   */
+  @Input()
+  bulletTranslate: number = 10;
+
+  /**
    * Color of the toolbar behind the tab buttons
    */
   @Input()
@@ -336,7 +348,7 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
 
     this.linker.navChange(DIRECTION_SWITCH);
 
-    if (!this.hasTitles && !this.hasIcons) this._isToolbarVisible = false;
+    if (!this.hasTitles && !this.hasIcons && !this.bulletAnimation) this._isToolbarVisible = false;
 
     this.tabsContainer.slideTo(this.selectedTabIndex, false);
     this.refreshTabStates();
@@ -570,6 +582,9 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
       } else if (this.hasTitles || this.hasIcons) {
         heightOffset = 48;
       }
+      else if (this.bulletAnimation) {
+        heightOffset = 0;
+      }
     }
 
     this.rnd.setStyle(this.tabsContainer.getNativeElement(), 'height', `calc(100% - ${heightOffset}px)`);
@@ -619,9 +634,10 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
 
   private getRelativeIndicatorPosition(index: number = this.selectedTabIndex): number {
     let position: number = 0;
+    console.log(this.toolbar.segmentButtonWidths);
     for (let i: number = 0; i < this.toolbar.segmentButtonWidths.length; i++) {
       if (index > Number(i)) {
-        position += this.toolbar.segmentButtonWidths[i];
+        position += this.toolbar.segmentButtonWidths[i]+this.bulletTranslate;
       }
     }
     return position;
